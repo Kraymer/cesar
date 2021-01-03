@@ -12,8 +12,11 @@
 > **/t͡sêsaːr/** :
 >
 >   1. *n.* french sculptor at the forefront of the Nouveau Réalisme movement with his radical compressions
->   2. *n.* git pre-commit hook to compress images and pdf files
+>   2. *n.* git pre-commit hook to compress images
 
+### Description
+
+`cesar` performs compression by calling external tools : `pngcrush` for PNG files and `jpegoptim` for JPEG files.
 
 ### Installation
 
@@ -28,3 +31,16 @@ Or if you use [pre-commit](https://github.com/pre-commit/pre-commit) framework, 
     -   id: cesar
 
 ```
+
+### Example
+
+~~~
+cesar....................................................................Failed
+hookid: cesar
+
+Files were modified by this hook. Additional output:
+
+compressed docs/Selection_459.png: 256K => 252K
+All done! ⚡ 🗿 ⚡
+1 file compressed, 3 files left unchanged
+~~~
