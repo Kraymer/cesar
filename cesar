@@ -56,5 +56,8 @@ do
       fi
   fi
 done
-echo "All done! ⚡ 🗿 ⚡"
-echo "${changed}" $(file_singular_plural $changed) compressed, "${unchanged}" $(file_singular_plural $unchanged) left unchanged
+
+if [[ ${changed} -gt 0 || ${unchanged} -gt 0 ]]; then
+    echo "All done! ⚡ 🗿 ⚡"
+    echo "${changed}" $(file_singular_plural $changed) compressed, "${unchanged}" $(file_singular_plural $unchanged) left unchanged
+fi
