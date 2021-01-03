@@ -20,7 +20,7 @@
 
 ### Installation
 
-Copy [`pre_commit_hooks/cesar`](pre_commit_hooks/cesar) to your `.git/hooks/` folder and rename it as `pre-commit`.
+Copy [`/cesar`](https://raw.githubusercontent.com/Kraymer/cesar/master/cesar) to your `.git/hooks/` folder and rename it as `pre-commit`.
 
 Or if you use [pre-commit](https://github.com/pre-commit/pre-commit) framework, add this to your `.pre-commit-config.yaml` :
 
