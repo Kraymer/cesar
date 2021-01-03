@@ -48,7 +48,7 @@ do
       compress "${file}"
       new_size=$(filesize ${file})
 
-      if [ "$old_size" != "$new_size" ]; then
+      if [ "${old_size}" != "${new_size}" ]; then
         echo "compressed $file:" ${old_size} "=>" ${new_size}
         ((changed++))
       else
@@ -57,7 +57,7 @@ do
   fi
 done
 
-if [[ ${changed} -gt 0 || ${unchanged} -gt 0 ]]; then
+if [[ ${changed} -gt 0 ]]; then
     echo "All done! ⚡ 🗿 ⚡"
     echo "${changed}" $(file_singular_plural $changed) compressed, "${unchanged}" $(file_singular_plural $unchanged) left unchanged
 fi
