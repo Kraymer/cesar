@@ -1,0 +1,5 @@
+repos:
+-   repo: https://github.com/Kraymer/cesar
+    rev: master
+    hooks:
+    -   id: cesar

@@ -1,0 +1,9 @@
+-   id: cesar
+    name: cesar
+    description: The images radical compressor
+    entry: cesar
+    language: script
+    always_run: true
+    pass_filenames: true
+    verbose: false
+    types: [image]

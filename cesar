@@ -1,0 +1,60 @@
+#!/bin/bash
+
+# exit on error if external tool is missing
+require_install () {
+    prog=$1
+    command -v "${prog}" >/dev/null 2>&1 || {
+        echo "Please install" "${prog}" "to reduce images size before commit"
+     exit 1;
+    }
+}
+
+# helper function fo handling plural form of message
+file_singular_plural () {              
+    num_files=$1
+    local res="file" 
+    if (( num_files != 1 )) 
+    then
+        res+="s"        
+    fi
+    printf "%s" "$res"  
+}
+
+# compress input image if it is png or jpeg
+compress () {
+    file=$1
+    if [[ ${file} = *.png ]]; then
+        pngcrush -q -ow -rem alla -brute -reduce "$file"
+    elif [[ ${file} =~ \.(jpe?g)$ ]]; then
+        jpegoptim -q "$file"
+    fi
+}
+
+# print file human readable size
+filesize() {
+    file=$1  
+    echo $(ls -sh "${file}"|cut -f1 -d " ")  
+}
+
+require_install "pngcrush"
+require_install "jpegoptim"
+
+changed=0
+unchanged=0
+for file in "$@"
+do
+  if [[ ${file} =~ \.(png|jpe?g)$ ]]; then
+      old_size=$(filesize ${file})
+      compress "${file}"
+      new_size=$(filesize ${file})
+
+      if [ "$old_size" != "$new_size" ]; then
+        echo "compressed $file:" ${old_size} "=>" ${new_size}
+        ((changed++))
+      else
+        ((unchanged++))
+      fi
+  fi
+done
+echo "All done! ⚡ 👑 ⚡"
+echo "${changed}" $(file_singular_plural $changed) compressed, "${unchanged}" $(file_singular_plural $unchanged) left unchanged
