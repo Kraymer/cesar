@@ -26,7 +26,7 @@ Or if you use [pre-commit](https://github.com/pre-commit/pre-commit) framework, 
 
 ```yaml
 -   repo: https://github.com/kraymer/cesar
-    rev: main
+    rev: master
     hooks:
     -   id: cesar
 
