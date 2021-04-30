@@ -5,7 +5,7 @@
 
 
 <p align="center">
-<a href="https://github.com/psf/black/blob/master/LICENSE"><img alt="License: MIT" src="https://github.com/Kraymer/public/blob/master/brack/license.svg"></a>
+<a href="https://github.com/Kraymer/cesar/blob/master/LICENSE"><img alt="License: MIT" src="https://github.com/Kraymer/public/blob/master/brack/license.svg"></a>
 <a href="https://ko-fi.com/kraymer"><img alt="Donate" src="https://img.shields.io/badge/-%E2%99%A1%20Donate%20-ff69b4"></img></a>
 </p>
 
