@@ -10,14 +10,14 @@ require_install () {
 }
 
 # helper function fo handling plural form of message
-file_singular_plural () {              
+file_singular_plural () {
     num_files=$1
-    local res="file" 
-    if (( num_files != 1 )) 
+    local res="file"
+    if (( num_files != 1 ))
     then
-        res+="s"        
+        res+="s"
     fi
-    printf "%s" "$res"  
+    printf "%s" "$res"
 }
 
 # compress input image if it is png or jpeg
@@ -32,8 +32,8 @@ compress () {
 
 # print file human readable size
 filesize() {
-    file=$1  
-    echo $(ls -sh "${file}"|cut -f1 -d " ")  
+    file=$1
+    echo $(ls -sh "${file}"|cut -f1 -d " ")
 }
 
 require_install "pngcrush"
