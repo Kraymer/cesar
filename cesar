@@ -44,9 +44,9 @@ unchanged=0
 for file in "$@"
 do
   if [[ ${file} =~ \.(png|jpe?g)$ ]]; then
-      old_size=$(filesize ${file})
+      old_size=$(filesize "${file}")
       compress "${file}"
-      new_size=$(filesize ${file})
+      new_size=$(filesize "${file}")
 
       if [ "${old_size}" != "${new_size}" ]; then
         echo "compressed $file:" ${old_size} "=>" ${new_size}
