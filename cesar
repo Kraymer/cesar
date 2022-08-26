@@ -24,8 +24,10 @@ file_singular_plural () {
 compress () {
     file=$1
     if [[ ${file} = *.png ]]; then
+        require_install "pngcrush"
         pngcrush -q -ow -rem alla -brute -reduce "$file"
     elif [[ ${file} =~ \.(jpe?g)$ ]]; then
+        require_install "jpegoptim"
         jpegoptim -q "$file"
     fi
 }
@@ -35,9 +37,6 @@ filesize() {
     file=$1  
     echo $(ls -sh "${file}"|cut -f1 -d " ")  
 }
-
-require_install "pngcrush"
-require_install "jpegoptim"
 
 changed=0
 unchanged=0
