@@ -10,30 +10,30 @@ require_install () {
 }
 
 # helper function fo handling plural form of message
-file_singular_plural () {              
+file_singular_plural () {
     num_files=$1
-    local res="file" 
-    if (( num_files != 1 )) 
+    local res="file"
+    if (( num_files != 1 ))
     then
-        res+="s"        
+        res+="s"
     fi
-    printf "%s" "$res"  
+    printf "%s" "$res"
 }
 
 # compress input image if it is png or jpeg
 compress () {
     file=$1
-    if [[ ${file} = *.png ]]; then
+    if [[ "$file" = *.png ]]; then
         pngcrush -q -ow -rem alla -brute -reduce "$file"
-    elif [[ ${file} =~ \.(jpe?g)$ ]]; then
+    elif [[ "$file" =~ \.(jpe?g)$ ]]; then
         jpegoptim -q "$file"
     fi
 }
 
 # print file human readable size
 filesize() {
-    file=$1  
-    echo $(ls -sh "${file}"|cut -f1 -d " ")  
+    file=$1
+    echo $(ls -sh "$file" | cut -f1 -d " ")
 }
 
 require_install "pngcrush"
@@ -43,10 +43,10 @@ changed=0
 unchanged=0
 for file in "$@"
 do
-  if [[ ${file} =~ \.(png|jpe?g)$ ]]; then
-      old_size=$(filesize ${file})
-      compress "${file}"
-      new_size=$(filesize ${file})
+  if [[ "$file" =~ \.(png|jpe?g)$ ]]; then
+      old_size=$(filesize "$file")
+      compress "$file"
+      new_size=$(filesize "$file")
 
       if [ "${old_size}" != "${new_size}" ]; then
         echo "compressed $file:" ${old_size} "=>" ${new_size}
