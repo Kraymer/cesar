@@ -1,5 +1,8 @@
 #!/bin/bash
 
+pngcrush_installed=0
+jpegoptim_installed=0
+
 # exit on error if external tool is missing
 require_install () {
     prog=$1
@@ -24,9 +27,17 @@ file_singular_plural () {
 compress () {
     file=$1
     if [[ "$file" = *.png ]]; then
+        if (( $pngcrush_installed == 0 )); then
+            require_install "pngcrush"
+        fi
         pngcrush -q -ow -rem alla -brute -reduce "$file"
+        pngcrush_installed=1
     elif [[ "$file" =~ \.(jpe?g)$ ]]; then
+        if (( $jpegoptim_installed == 0 )); then
+            require_install "jpegoptim"
+        fi
         jpegoptim -q "$file"
+        jpegoptim_installed=1
     fi
 }
 
@@ -35,9 +46,6 @@ filesize() {
     file=$1
     echo $(ls -sh "$file" | cut -f1 -d " ")
 }
-
-require_install "pngcrush"
-require_install "jpegoptim"
 
 changed=0
 unchanged=0
