@@ -1,5 +1,5 @@
 <h2 align="center">
-    <img alt="Logo" src="https://www.bocusedor-winners.com/data/classes/actualite/actu_278_vignette.jpg" height=300></img><br>
+    <img alt="Logo" src="https://github.com/Kraymer/__pub/blob/master/cesar/logo.png" height=300></img><br>
     CESAR → <em>The Radical Compressor</em> ←
 </h2>
 
